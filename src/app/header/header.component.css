@@ -1,0 +1,95 @@
+/* Topbar Container */
+
+.shi-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 4.02em;
+  padding: 0 1.59em;
+  background: #2d232e;
+  color: white;
+}
+  
+.shi-topbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+img.user-img-thumbnail {
+  width: 1.59em;
+  border-radius: 50%;
+}
+
+.hover-target {
+  display: none;
+  position: absolute;
+  z-index: 90;
+  transition: all 0.5s linear;
+  border-radius: 4px;
+  background: #2d232e;
+  border: 1px solid #4d5256;
+  box-shadow: 2px 2px 4px rgba(66, 48, 68, 0.67);
+  top: 0;
+}
+
+.hover-action:hover + .hover-target, .hover-target:hover {
+  display: block;
+  right: 0;
+  animation: .31s opaque linear;
+}
+
+.more-items {
+  padding: 0.63em 0;
+  width: 10.18em;
+}
+
+.more-item {
+  padding: 0.63em;
+  color: #dadada;
+  cursor: pointer;
+}
+
+.more-item:hover {
+  color: white;
+}
+
+
+/* Menu  */
+.menu {
+  width: 100%;
+  height: 3.19em;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #423044;
+}
+
+/* Menu Item */
+.menu .menu-item{ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1em;
+  padding: 0 1em;
+  font-weight: 700;
+  color: #FDFFFC;
+  opacity: 0.8;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+}
+
+/* Menu Item Hover Effect */
+.menu .menu-item:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* Menu Item Active Effect */
+.menu .menu-item.active {
+  color: #fff;
+  opacity: 1;
+  cursor: default;
+  border-bottom: 2px solid white;
+}

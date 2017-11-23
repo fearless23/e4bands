@@ -1,0 +1,108 @@
+<div class="inline-loader" *ngIf="!(product | async)"></div>
+<div class="medium-container spinner-padding">
+
+  <div *ngIf="uid === (product | async)?.soldByUserId" class="m-t-xl">
+    <p>Hey, {{userName}}! You have created this Product on {{(product | async)?.dateAdded | date}}</p>
+    <input type="file" class="hidden inputfile" accept="image/*" name="productImg" id="productImg" (change)="uploadImg($event)">
+    <label for="productImg" class="btn btn-purple">Upload/Change Image</label>
+    <button class="btn-red" (click)="removeProduct()">Delete Product</button>
+  </div>
+  <div class="res-grid p-y-md m-t-xl">
+
+    <div class="one-half p-x">
+      <!-- Full Product Image -->
+      <div *ngIf="!(product | async)?.imageURL" class="fbox-sa p-y">
+        <img src="assets/img/no-product-img.jpg" class="full-img">
+      </div>
+      <div class="fbox-sa p-y">
+        <img src="{{(product | async)?.imageURL}}" class="full-img">
+      </div>
+      <div *ngIf="uid === (product | async)?.soldByUserId" style="text-align:center;">
+        <div class="m-t">
+          <small>Don`t like this image: Upload another to overwrite this.</small>
+        </div>
+
+
+        <div *ngIf="imageName" class="m-t">Image - {{imageName}}</div>
+
+        <div *ngIf="progress" class="progress m-t-xl">
+          <div class="bar" [style.width]="progress + '%'"></div>
+          <span *ngIf="!(progress===100)" class="text">Uploading {{progress}}% Complete</span>
+          <span *ngIf="progress===100" class="text">Hurray! Image has been uploaded</span>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="one-half p-x">
+      <div class="title title-lg m-t">{{(product | async)?.name}}</div>
+      <div class="title title-md text-red m-t">&#x20b9; {{(product | async)?.price}}</div>
+      <div class="m-t">{{(product | async)?.city}}</div>
+      <div class="m-t">{{(product | async)?.category}}</div>
+      <div class="m-t">Mobile:
+        <a href="tel:0{{(product | async)?.mobile}}">0{{(product | async)?.mobile}}</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="m-t-xl">
+
+    <ul class="tabs">
+
+      <li>
+        <input class="hidden" type="radio" name="tabs" id="tab1" checked />
+        <label for="tab1">Description</label>
+        <div class="tab-content">
+          {{(product | async)?.description}}
+        </div>
+      </li>
+
+      <li>
+        <input class="hidden" type="radio" name="tabs" id="tab2" />
+        <label for="tab2">Specs</label>
+        <div class="tab-content">
+          <div>
+            <strong>Product Bought ( years ago):</strong>
+            {{ (product | async)?.age }}
+          </div>
+          <div class="m-t">
+            <strong>Color:</strong>
+            {{ (product | async)?.color }}
+          </div>
+          <div class="m-t">
+            <strong>Brand:</strong>
+            {{ (product | async)?.brand}}
+          </div>
+
+          <div class="m-t">
+            <strong>Material:</strong>
+            {{ (product | async)?.material }}
+          </div>
+
+          <div class="m-t">
+            <strong>Features:</strong>
+            <ol class="default-list">
+              <li *ngFor='let x of (product | async)?.features'>{{x?x:'Not Specified'}}</li>
+            </ol>
+          </div>
+
+        </div>
+      </li>
+
+      <li>
+        <input class="hidden" type="radio" name="tabs" id="tab3" />
+        <label for="tab3">Contact</label>
+        <div class="tab-content">
+          This product is put on sale by {{(product | async)?.soldByUserName}}, make a call at
+          <a href="tel:0{{(product | async)?.mobile}}">0{{(product | async)?.mobile}}</a>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>

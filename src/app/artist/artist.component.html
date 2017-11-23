@@ -1,0 +1,28 @@
+<div class="inline-loader" *ngIf="!(artist | async)"></div>
+<div class="medium-container spinner-padding">
+
+  <div class="res-grid p-y-md m-t-xl">
+
+    <div class="one-half p-x">
+      <!-- Full Product Image -->
+      <div class="fbox-sa p-y">
+        <img src="{{(artist | async)?.imageURL}}" class="user-img">
+      </div>
+    </div>
+    <div class="one-half">
+      <div class="title title-lg m-t">{{(artist | async)?.name}}</div>
+      <div class="title title-md m-t">Type: {{(artist | async)?.category}}</div>
+      <div class="title title-md m-t">Band: {{(artist | async)?.band}}</div>
+      <div class="m-t">City: {{(artist | async)?.city}}</div>
+      <div class="m-t">{{(artist | async)?.bio}}</div>
+      <div class="m-t">
+        <strong>Mobile: </strong>
+        <a href="tel:0{{(artist | async)?.mobile}}">
+          0{{(artist | async)?.mobile}}
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</div>

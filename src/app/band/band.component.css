@@ -1,0 +1,14 @@
+.artist-img-container {
+  padding: 1em 0;
+  height: 11.43em;
+  background: #fafafa;
+}
+
+.artist-img-container img {
+  display: block;
+  margin: 0 auto;
+  max-height: 9.43em;
+  max-width: 100%;
+  border-radius: 100%;
+  mix-blend-mode: multiply;
+}

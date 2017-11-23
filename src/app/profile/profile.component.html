@@ -1,0 +1,19 @@
+<div class="medium-container min-height-pad">
+
+  <h2>Profile</h2>
+  <div class="divider"></div>
+  
+  <div class="res-grid p-y-md m-t-xl">
+    
+    <div class="one-third p-x">
+      <div class="profile-title">Account Details</div>
+    </div>
+    <div class="two-third p-x">
+      <div class="m-t">{{ (user | async)?.displayName }}</div>
+      <div class="m-t">{{ (user | async)?.email }}</div>
+      <div class="m-t">Signed in via Google</div>
+    </div>
+
+  </div>
+  
+</div>

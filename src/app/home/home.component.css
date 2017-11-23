@@ -1,0 +1,125 @@
+.masthead {
+  position: relative;
+  margin-top: -3.19em;
+  background: #2d232e;
+  color: white;
+}
+
+@media (min-width: 740px) {
+  .masthead {
+    padding: 4em 0;
+  }
+}
+
+@media (max-width: 719px){
+  .hero-half {
+    text-align: center;
+  }
+}
+
+.hero-title {
+  font-size: 2em;
+  text-transform: none;
+}
+
+@media (min-width: 910px) {
+  .hero-title {
+    font-size: 2.54em;
+  }
+}
+
+.hero-sub-title {
+  font-size: 1.12em;
+}
+
+.hero-img img{
+  display: block;
+  max-height: 20em;
+  margin: 0 auto;
+  mix-blend-mode: multiply;
+  transform: rotateZ(192deg);
+}
+
+@media (max-width: 720px){
+  .hero-img {
+    display: none;
+  }
+}
+
+.masthead ul {
+  margin: 1em 0;
+  font-size: .89em;
+}
+
+.masthead ul li, .masthead ul li a{  color: #b5b5b5;}
+.masthead ul li:hover, .masthead ul li a:hover {  color: white;}
+
+
+
+.home-title {
+  padding: .51em 1.26em;
+  font-size: 1.26em;
+  color: #2d232c;
+  text-align: center;
+}
+
+.flash {
+  position: relative;
+  width: 100%;
+  height: 8em;
+  /* margin-bottom: -8em; To counter big padding of footer on home page */
+  background: #423044;
+}
+
+.flash div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1em;
+  font-size: 1.59em;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  color: #dadada
+}
+
+@keyframes flashing {
+  0% { opacity: 0}
+  2%,11% { opacity: 1;}
+  12.5%,100%{ opacity: 0;}
+}
+
+.flash div:nth-child(1) {
+  animation: flashing 16s ease-in-out infinite;
+}
+
+.flash div:nth-child(2) {
+  animation: flashing 16s ease-in-out 2s infinite;
+}
+
+.flash div:nth-child(3) {
+  animation: flashing 16s ease-in-out 4s infinite;
+}
+
+.flash div:nth-child(4) {
+  animation: flashing 16s ease-in-out 6s infinite;
+}
+
+.flash div:nth-child(5) {
+  animation: flashing 16s ease-in-out 8s infinite;
+}
+
+.flash div:nth-child(6) {
+  animation: flashing 16s ease-in-out 10s infinite;
+}
+
+.flash div:nth-child(7) {
+  animation: flashing 16s ease-in-out 12s infinite;
+}
+
+.flash div:nth-child(8) {
+  animation: flashing 16s ease-in-out 14s infinite;
+}

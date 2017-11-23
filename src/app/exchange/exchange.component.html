@@ -1,0 +1,60 @@
+<div class="white2">
+  <div class="medium-container">
+    <div class="p-y-md title title-lg">Exchange Your Music Instruments with a similar Instrument</div>
+    <div class="product-filter">
+      <div class="fbox-sa m-t m-r">
+        <div class="title m-r">Your City:</div>
+        <select class="form-select select-md" [(ngModel)]="city" (change)="filterExact('city', city)">
+          <option *ngFor="let city of (cats | async)?.cities" [ngValue]="city">{{city}}</option>
+        </select>
+        <div class="filter-remove-btn" title="Remove City Filter" *ngIf="city" (click)="removeFilter('city')">X</div>
+      </div>
+
+      <div class="fbox-sa m-t m-r">
+        <div class="title m-r">Category:</div>
+        <select class="form-select select-md" [(ngModel)]="category" (change)="filterExact('category', category)">
+          <option *ngFor="let cat of (cats | async)?.instrument_types" [ngValue]="cat">{{cat}}</option>
+        </select>
+        <button class="filter-remove-btn" title="Remove Category Filter" *ngIf="category" (click)="removeFilter('category')">X</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="inline-loader" *ngIf="!filteredProducts"></div>
+<div class="medium-container spinner-padding">
+  <p class="m-t-md" *ngIf="length!==0">We have found {{length?length:'No'}} Products</p>
+  <div *ngIf="length===0" class="blankslate">
+    <!-- <img class="img" src=""> -->
+    <h2>Oops! No Exchange Product found for your selection</h2>
+  </div>
+  <!-- Products List -->
+  <div class="product-list" *ngIf="filteredProducts">
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card" *ngFor="let k of filteredProducts">
+      <div class="img-container">
+        <img *ngIf="k.imageURL" src="{{k.imageURL}}">
+        <img *ngIf="!k.imageURL" src="assets/img/no-product-img.jpg">
+      </div>
+
+      <div class="info">
+        <div class="type">{{k.category}}</div>
+      </div>
+      <div class="info">
+        <div class="user">{{k.soldByUserName}}</div>
+        <div class="location">{{k.city}}</div>
+      </div>
+      <div class="title">{{k.name}}</div>
+      <div class="p-x">Exchanging For:</div>
+      <div class="p-x">{{k.exchangeWith}}</div>
+      <div class="description">{{k.description}}</div>
+      <div routerLink="/exchange-product/{{k.pushKey}}" class="view-btn">View Product</div>
+
+    </div>
+
+
+
+  </div>
+</div>

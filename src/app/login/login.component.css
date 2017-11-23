@@ -1,0 +1,97 @@
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #2d232e;
+}
+
+
+.login-container {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+}
+
+@media (min-width: 40.94em) {
+  .login-container {
+    width: 25.74em;
+    min-height: 0;
+    height: initial;
+    margin-top: 8%;
+  }
+}
+
+@media (min-width: 60em) {
+  .login-container {
+    margin-top: 6%;
+  }
+}
+
+
+
+.login-form {
+  width: 22.92em;
+  margin: 0 auto;
+  padding: 1.19em;
+  background-color: #fff;
+}
+
+@media (min-width: 40.94em) {
+  .login-form {
+    width: 25.74em;
+    padding: 3.19em;
+  }
+}
+
+.login-logo {
+  max-height: 12em;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 2em;
+}
+
+.login-form h1 {
+  font-size: 1.42em;
+  font-weight: bold;
+  text-transform: inherit;
+  letter-spacing: 0.1em;
+  margin: 0;
+  margin-bottom: 1.42em;
+}
+
+.login-form h2 {
+  font-size: 1.26em;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  margin: 0;
+  margin-bottom: 1.59em;
+}
+
+.login-form .btn {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+
+.login-form .btn img {
+  height: 18px;
+  margin-right: 24px;
+}
+
+.btn-google {
+  width: 100%;
+  background: #fff;
+}
+
+.login-error {
+  margin: 1em 0;
+  color: #e62739;
+}

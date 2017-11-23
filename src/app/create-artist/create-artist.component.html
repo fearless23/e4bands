@@ -1,0 +1,60 @@
+<div class="medium-container min-height-pad" style="max-width: 36.46em; margin: 2em auto;">
+  <h2> Create Artist </h2>
+
+  <div class="form-container m-y-md">
+    <form [formGroup]="createArtistForm" (ngSubmit)="createArtist(createArtistForm.value)">
+     
+      <!--============  NAME  =========================-->
+      <div class="form-group">
+        <label>Your Name</label>
+        <input type="text" class="form-control input-md" placeholder="Sachin Sharma" 
+          id="artist-name" formControlName="name">
+      </div>
+
+      <!--============  MOBILE  =========================-->
+      <div class="form-group">
+        <label>Mobile Number (+91-)</label>
+        <input type="number" class="form-control input-md" placeholder="9812398123" id="user-mobile" formControlName="mobile">
+      </div>
+      
+      <!--============  CITY  =========================-->
+      <div class="form-group">
+        <label>Select Your City</label>
+        <select class="form-select select-md" formControlName="city">
+          <option *ngFor="let city of (cats | async)?.cities" [ngValue]="city">{{city}}</option>
+        </select>
+      </div>
+
+      <!--============  CATEGORY  =========================-->
+      <div class="form-group">
+        <label>What kind of Artist are you?</label>
+        <select class="form-select select-md" formControlName="category">
+          <option *ngFor="let cat of (cats | async)?.artist_types" [ngValue]="cat">{{cat}}</option>
+        </select>
+      </div>
+
+      <!--============  BAND TYPE  =========================-->
+      <div class="form-group">
+        <label>Choose a Band Type in which you performs</label>
+        <select class="form-select select-md" formControlName="band">
+          <option *ngFor="let band of (cats | async)?.band_types" [ngValue]="band">{{band}}</option>
+        </select>
+      </div>
+
+      <!--============  BIO  =========================-->
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea class="form-control" placeholder="I have been playing guitar for last 5 years."
+          formControlName="bio">
+        </textarea>
+        <span class="el-sm">Type a minimum of 30 characters.</span>
+      </div>
+   
+      <button type="submit" class="btn btn-green" value="Submit Form" [disabled]="!createArtistForm.valid">
+        Create Artist Page
+      </button>
+     
+    </form>
+  </div>
+ 
+</div>

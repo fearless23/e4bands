@@ -1,0 +1,32 @@
+<div class="shi-topbar">
+
+  <div class="logo clickable" routerLink="">E4Bands</div>
+
+  <div class="user-area clickable" routerLink="login" *ngIf="!loggedIn">Login/Signup</div>
+
+  <div class="fbox-sa" *ngIf="loggedIn">
+
+    <div class="m-r">Hi, {{name}}</div>
+    <div class="pos-rel" style="height:1.59em;">
+      <img class="user-img-thumbnail hover-action" src="{{userPhoto}}">
+      <div class="hover-target">
+        <ul class="more-items">
+          <li class="more-item" routerLink="/profile">Profile</li>
+          <li class="more-item" routerLink="/sell">Sell/Exchange Product</li>
+          <li class="more-item" routerLink="/create-artist">Create Artist</li>
+          <li class="more-item" (click)="logout()">LogOut</li>
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="shi-menu-container">
+  <ul class="menu">
+    <li class="menu-item" routerLink="/buy" routerLinkActive="active" title="Buy Musical Instruments">Buy</li>
+    <li class="menu-item" routerLink="/exchange" routerLinkActive="active" title="Sell Musical Instruments">Exchange</li>
+    <li class="menu-item" routerLink="/band" routerLinkActive="active" title="Form Band with talented Artists">Form Band</li>
+  </ul>
+</div>

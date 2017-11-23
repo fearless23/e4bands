@@ -1,0 +1,20 @@
+.preview {
+  margin: 0 auto;
+}
+
+.sell-not-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 20em;
+}
+
+.btn-white.active {
+  background: #00a8e8;
+  color: white;
+}
+
+.min-height-pad {
+  min-height: 9.23em;
+}

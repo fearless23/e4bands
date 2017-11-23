@@ -1,0 +1,35 @@
+.big-padding {
+  height: 1em;
+  padding: 4em 0;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1.42em 0;
+  color: #fff;
+}
+
+.footer h4 { color: goldenrod; }
+.footer h6 { color: #2ca58d; }
+
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-list .link-item {
+  padding: 0.5em 0;
+  cursor: pointer;
+  color: #b5b5b5;
+}
+
+.link-list .link-item:hover {
+  color: white;
+}
+
+.footer-bottom {
+  color: #b5b5b5;
+}

@@ -1,0 +1,77 @@
+<div class="small-container min-height-pad">
+
+  <ng-container *ngIf="isFormSubmitted; then formData else contactFormTemplate"></ng-container>
+  <ng-template #formData>
+    <h2> Query Received </h2>
+    <p>
+      <strong>SendBy:</strong> {{userName}}</p>
+    <p>
+      <strong>From Email: </strong>{{userEmail}}</p>
+    <p>
+      <strong>Query Title:</strong> {{contactForm.value.title}}</p>
+    <p>
+      <strong>Query Type:</strong> {{contactForm.value.queryType}}</p>
+    <strong>Message:</strong>
+    <p>{{contactForm.value.message}}</p>
+    <p>We will contact you shortly.</p>
+    <button class="btn-green" routerLink="">Get Back Home</button>
+  </ng-template>
+
+  <ng-template #contactFormTemplate>
+
+    <h2> Contact Us </h2>
+    <div class="m-t">
+      <p class="m-t">
+        Making a complaint, giving a compliment or offering a suggestion can help us improve our service. You can send us mail for
+        any concern or improvements.
+      </p>
+      <div class="m-t">
+        <strong>Email: </strong>
+        <a href="email:e4bands@gmail.com">e4bands@gmail.com</a>
+      </div>
+      <strong>Address:</strong>
+      <br>
+      <address class="m-t m-l">
+        RZ 154,
+        <br> Main Jagadamba Rd, Kalkaji near Tara Apartment
+        <br> Tughlakabad, New Delhi - 110019
+      </address>
+    </div>
+
+    <h3 class="m-t-xl"> Post Your Query </h3>
+    <form [formGroup]="contactForm" (ngSubmit)="sendContactForm(contactForm.value)">
+
+      <p>Name: {{userName}}</p>
+      <p>Email: {{userEmail}}</p>
+
+      <!--============  TITLE  =========================-->
+      <div class="form-group">
+        <label> Query Title</label>
+        <input type="text" class="form-control input-lg" placeholder="Problem with buying" formControlName="title">
+        <span class="el-sm">Type a Minimum of 10 characters</span>
+      </div>
+
+      <!--============  Query TYPE =========================-->
+      <div class="form-group">
+        <label>Query Type</label>
+        <input type="text" class="form-control input-lg" placeholder="Buying Problem" id="artist-name" formControlName="queryType">
+      </div>
+
+      <!--============  MESSAGE  =========================-->
+      <div class="form-group">
+        <label>Message</label>
+        <textarea class="form-control" placeholder="I have been playing guitar for last 5 years." formControlName="message">
+        </textarea>
+        <span class="el-sm">Type a Minimum of 30 characters</span>
+      </div>
+
+      <!--============  SUBMIT  =========================-->
+      <button type="submit" class="btn btn-green" value="Submit Form" [disabled]="!contactForm.valid">
+        Submit
+      </button>
+
+    </form>
+
+  </ng-template>
+
+</div>

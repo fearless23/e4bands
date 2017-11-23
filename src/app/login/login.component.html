@@ -1,0 +1,23 @@
+<div class="container">
+
+  <div class="login-container">
+
+    <div class="login-form">
+      <img class="login-logo" src="assets/img/logox.jpg">
+      <h1> Everything For Bands </h1>
+      <h2> Buy music instruments , form your band with talented artists in your town.</h2>
+
+      <button (click)="loginGoogle()" class="btn btn-white btn-google">
+        <img src="assets/img/google.jpg">
+        <strong>Connect with google</strong>
+      </button>
+
+      <div class="login-error" *ngIf="error">
+        {{error.message}}
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

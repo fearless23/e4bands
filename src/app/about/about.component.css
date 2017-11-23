@@ -1,0 +1,14 @@
+.about > * {  text-align: justify; }
+
+.about h1 {
+  padding-bottom: .56em;
+  border-bottom: 1px solid #dadada;
+}
+
+.about p {
+  font-size: 1.12em;
+  line-height: 1.4;
+}
+
+
+

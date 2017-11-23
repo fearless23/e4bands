@@ -1,0 +1,68 @@
+<div class="white2">
+  <div class="medium-container">
+    <div class="fbox p-y-md title title-lg">Form your Band with talented Artists in your town.</div>
+    <div class="product-filter">
+        <div class="fbox-sa m-t m-r">
+          <div class="title m-r">City:</div>
+          <select class="form-select select-md" [(ngModel)]="city" (change)="filterExact('city', city)">
+            <option *ngFor="let city of (cats | async)?.cities" [ngValue]="city">{{city}}</option>
+          </select>
+          <button class="filter-remove-btn" title="Remove City Filter" *ngIf="city" (click)="removeFilter('city')">X</button>
+        </div>
+        
+        <div class="fbox-sa m-t m-r">
+          <div class="title m-r">Artist Type:</div>
+          <select class="form-select select-md" [(ngModel)]="category" (change)="filterExact('category', category)">
+            <option *ngFor="let cat of (cats | async)?.artist_types" [ngValue]="cat">{{cat}}</option>
+          </select>
+          <button class="filter-remove-btn" title="Remove Category Filter" *ngIf="category" (click)="removeFilter('category')">X</button>
+        </div>
+
+        <div class="fbox-sa m-t m-r">
+          <div class="title m-r">Band Type:</div>
+          <select class="form-select select-md" [(ngModel)]="band" (change)="filterExact('band', band)">
+            <option *ngFor="let band of (cats | async)?.band_types" [ngValue]="band">{{band}}</option>
+          </select>
+          <button class="filter-remove-btn" title="Remove Band Filter" *ngIf="band" (click)="removeFilter('band')">X</button>
+        </div>
+
+    </div>
+  </div>
+</div>
+  
+<div class="inline-loader" *ngIf="!filteredArtists"></div>
+
+<div class="medium-container spinner-padding">
+  <p class="m-t" *ngIf="length!==0">We have found {{length?length:'No'}} Artist</p>
+  <div *ngIf="length===0" class="blankslate">
+      <!-- <img class="img" src=""> -->
+      <h2>Oops! No Musicians found for your selection</h2>
+    </div>
+  <!-- Products List -->
+  <div class="product-list" *ngIf="filteredArtists">
+
+    <!-- PRODUCT CARD -->
+    <div class="product-card" *ngFor="let k of filteredArtists">
+      <div class="artist-img-container">
+        <img src="{{k.imageURL}}">
+      </div>
+      
+      <div class="info">
+        <div class="type">{{k.category}}</div>
+        <div class="location">{{k.band}}</div>
+      </div>
+
+      <div class="info">
+        <div class="user">{{k.name}}</div>
+        <div class="location">{{k.city}}</div>
+      </div>
+           
+      
+      <div class="description">{{k.bio}}</div>      
+      <div routerLink="/artist/{{k.pushKey}}" class="view-btn">View Artist</div>
+      
+    </div> <!-- End of Product Card -->
+    
+  </div> <!-- End of Products List -->
+   
+</div>

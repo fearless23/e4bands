@@ -1,0 +1,38 @@
+.full-img {
+  max-width: 69%;
+  max-height: 22.92em;
+  border: 4px solid #2d232e;
+  border-radius: 10px;
+}
+
+ol.default-list li {
+  display: list-item;
+  margin-left: 1em;
+  list-style: initial !important;
+}
+
+.progress {
+  position: relative;
+  width: 100%;
+  height: .51em;
+  border: 1px solid #dadada;
+  border-radius: 2em;
+  background: white;
+}
+
+.progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: #2ca58d;
+}
+
+.progress .text {
+  display: block;
+  position: absolute;
+  top: -2em;
+  right: 0;
+  line-height: 2em;
+}
