@@ -7,12 +7,12 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyCwn-QfZjRq-yQdklkWMsohYekdG8wIIeY',
-  authDomain: 'e4bands-2017.firebaseapp.com',
-  databaseURL: 'https://e4bands-2017.firebaseio.com',
-  projectId: 'e4bands-2017',
-  storageBucket: 'e4bands-2017.appspot.com',
-  messagingSenderId: '151854394335'
+  apiKey: 'abc',
+  authDomain: 'abc',
+  databaseURL: 'abc',
+  projectId: 'abc',
+  storageBucket: 'abc',
+  messagingSenderId: '1abc'
 };
 
 import { AppComponent } from './app.component';
