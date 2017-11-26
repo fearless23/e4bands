@@ -7,22 +7,19 @@
 
   <div class="m-t-xl" *ngIf="loggedIn" style="text-align: center;">
     <h3>What you wanna do </h3>
-    <button class="btn-white m-r" [ngClass]="{'active' : isSelling}" 
-     (click)="isSelling=true; isExchanging=false;">Sell for a price</button>
-     OR
-    <button class="btn-white m-l-md" [ngClass]="{'active' : isExchanging}"
-     (click)="isSelling=false; isExchanging=true;">Exchange for something similar</button>
+    <button class="btn-white m-r" [ngClass]="{'active' : isSelling}" (click)="isSelling=true; isExchanging=false;">Sell for a price</button>
+    OR
+    <button class="btn-white m-l-md" [ngClass]="{'active' : isExchanging}" (click)="isSelling=false; isExchanging=true;">Exchange for something similar</button>
   </div>
-  
+
   <ng-container *ngIf="loggedIn && isSelling">
-    <div class="res-grid p-y-md m-t-xl" >
+    <div class="res-grid p-y-md m-t-xl">
 
       <div class="one-half m-b">
         <h2 style="text-align: center;">Product Preview</h2>
         <div class="product-card preview">
           <div class="img-container">
             <img src="assets/img/no-product-img.jpg">
-            <!--<img *ngIf="imageURL" src="{{imageURL}}">-->
           </div>
 
           <div class="info">
@@ -35,8 +32,8 @@
           </div>
 
           <div class="title">{{createProductForm.controls.name.value ? createProductForm.controls.name.value : "Electric Guitar"}}</div>
-          <div class="description">{{createProductForm.controls.description.value ? createProductForm.controls.description.value : "I want to sell my
-            Electric Guitar"}}</div>
+          <div class="description">{{createProductForm.controls.description.value ? createProductForm.controls.description.value : "I want to sell
+            my Electric Guitar"}}</div>
         </div>
 
       </div>
@@ -44,38 +41,16 @@
       <div class="one-half">
         <h2>Sell Your Instrument</h2>
         <form [formGroup]="createProductForm" (ngSubmit)="createProduct(createProductForm.value)">
-        
+
           <!--============  NAME  =========================-->
           <div class="form-group">
             <label>Product Name</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Electric Guitar RXj5" 
-              formControlName="name">
+            <input type="text" class="form-control input-md" placeholder="Electric Guitar RXj5" formControlName="name">
           </div>
-
-          <!--============  IMAGE  
-          <div class="form-group">
-            <label>Product Image</label>
-            <input type="file" class="hidden inputfile"
-              accept="image/*"
-              name="productImg"
-              id="productImg"
-              (change)="uploadImg($event)">
-            <label for="productImg" [class.success]="imageUploaded">Upload Product Image</label>
-            <span *ngIf="imageName">Image - {{imageName}}</span>
-          </div>
-          <div *ngIf="progress" class="progress">
-            <div class="bar" [style.width]="progress + '%'"></div>
-            <span *ngIf="!(progress===100)" class="text">Uploading {{progress}}% Complete</span>
-            <span *ngIf="progress===100" class="text">Hurray! Image has been uploaded</span>
-          </div>
-          <small style="display: block;margin: .5em 0 1em;">
-             Don`t like this image:: Upload another to overwrite it.
-          </small>=========================-->
 
           <!--============  CATEGORY  =========================-->
           <div class="form-group">
-            <label>Choose a Instrument Type</label>
+            <label>Choose a Instrument Type*</label>
             <select class="form-select select-md" formControlName="category">
               <option *ngFor="let cat of (cats | async)?.instrument_types" [ngValue]="cat">{{cat}}</option>
             </select>
@@ -84,19 +59,18 @@
           <!--============  PRICE  =========================-->
           <div class="form-group">
             <label>Price (INR)</label>
-            <input type="number" class="form-control input-md" 
-              placeholder="5000" 
-              formControlName="price">
+            <input type="number" class="form-control input-md" placeholder="5000" formControlName="price">
+            <span class="el-sm">Provide a price minimum of Rs. 100</span>
           </div>
+
 
           <!--============  DESCRIPTION  =========================-->
           <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control" 
-              placeholder="I have bought this guitar 5 years ago. 
-              Tuning is good, colors have fainted a bit."
-              formControlName="description">
+            <textarea class="form-control" placeholder="I have bought this guitar 5 years ago. 
+              Tuning is good, colors have fainted a bit." formControlName="description">
             </textarea>
+            <span class="el-sm">Type a minimum of 30 characters</span>
           </div>
 
           <!--============  SPECS  =========================-->
@@ -104,43 +78,27 @@
 
           <!--============  AGE  =========================-->
           <div class="form-group">
-            <label>How Old is your Product</label>
-            <input type="number" class="form-control input-md"
-              placeholder="5"
-              formControlName="age">
+            <label>How Old is your Product (Required)</label>
+            <input type="number" class="form-control input-md" placeholder="5" formControlName="age">
+            <span class="el-sm">Minimum: 1 year Maximum: 30years. Choose one if less than one year</span>
           </div>
 
           <!--============  COLOR  =========================-->
           <div class="form-group">
-            <label>Color</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Midnight Blue"
-              formControlName="color">
+            <label>Color (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Midnight Blue" formControlName="color">
           </div>
 
           <!--============  MATERIAL  =========================-->
           <div class="form-group">
-            <label>Material</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Wooden" 
-              formControlName="material">
+            <label>Material (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Wooden" formControlName="material">
           </div>
 
           <!--============  BRAND  =========================-->
           <div class="form-group">
-            <label>Brand</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Yamaha"
-              formControlName="brand">
-          </div>
-
-          <!--============  FEATURES  =========================-->
-          <div class="form-group">
-            <label>More Features</label>
-            <input type="text" class="form-control input-md m-t"
-              placeholder="Feature #"
-              *ngFor="let control of createProductForm.controls['features'].controls"
-              [formControl]="control" />  
+            <label>Brand (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Yamaha" formControlName="brand">
           </div>
 
           <!--============  USERS  =========================-->
@@ -151,7 +109,7 @@
             <label>Your Name</label>
             <span>{{soldByUserName}}</span>
           </div>
-          
+
           <!--============  CITY  =========================-->
           <div class="form-group">
             <label>Select Your City</label>
@@ -163,9 +121,7 @@
           <!--============  MOBILE  =========================-->
           <div class="form-group">
             <label>Mobile Number (+91-)</label>
-            <input type="number" class="form-control input-md" 
-              placeholder="9812398123"
-              formControlName="mobile">
+            <input type="number" class="form-control input-md" placeholder="9812398123" formControlName="mobile">
           </div>
 
           <div class="form-group">
@@ -175,12 +131,10 @@
 
           <!--============  SUBMIT  =========================-->
           <!-- [disabled]="(!createProductForm.valid || !imageUploaded) ? true : false" -->
-          <button type="submit" class="btn btn-green" 
-            value="Submit Form" 
-            [disabled]="!createProductForm.valid">
+          <button type="submit" class="btn btn-green" value="Submit Form" [disabled]="!createProductForm.valid">
             Add Product to E4Bands
           </button>
-          
+
 
         </form>
       </div>
@@ -189,13 +143,12 @@
 
   <ng-container *ngIf="loggedIn && isExchanging">
     <div class="res-grid p-y-md m-t-xl">
-        
+
       <div class="one-half m-b">
         <h2 style="text-align: center;">Exchange Product Preview</h2>
         <div class="product-card preview">
           <div class="img-container">
             <img *ngIf="!imageURL" src="assets/img/no-product-img.jpg">
-            <img *ngIf="imageURL" src="{{imageURL}}">
           </div>
 
           <div class="info">
@@ -207,24 +160,22 @@
           </div>
 
           <div class="title">{{createExchangeProductForm.controls.name.value ? createExchangeProductForm.controls.name.value : "Electric Guitar"}}</div>
-          <div class="title">{{createExchangeProductForm.controls.exchangeWith.value ? createExchangeProductForm.controls.exchangeWith.value : "Another Electric Guitar"}}</div>
-          <div class="description">{{createExchangeProductForm.controls.description.value ? createExchangeProductForm.controls.description.value : "I want to sell my
-            Electric Guitar"}}</div>
+          <div class="title">{{createExchangeProductForm.controls.exchangeWith.value ? createExchangeProductForm.controls.exchangeWith.value
+            : "Another Electric Guitar"}}</div>
+          <div class="description">{{createExchangeProductForm.controls.description.value ? createExchangeProductForm.controls.description.value :
+            "I want to sell my Electric Guitar"}}</div>
         </div>
 
       </div>
 
       <div class="one-half">
         <h2>Exchange Your Instrument</h2>
-        <form [formGroup]="createExchangeProductForm" 
-          (ngSubmit)="createExchangeProduct(createExchangeProductForm.value)">
-                      
+        <form [formGroup]="createExchangeProductForm" (ngSubmit)="createExchangeProduct(createExchangeProductForm.value)">
+
           <!--============  NAME  =========================-->
           <div class="form-group">
             <label>Product Name</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Electric Guitar RXj5"
-              formControlName="name">
+            <input type="text" class="form-control input-md" placeholder="Electric Guitar RXj5" formControlName="name">
           </div>
 
           <!--============  IMAGE  
@@ -254,11 +205,10 @@
           <!--============  DESCRIPTION  =========================-->
           <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control" 
-              placeholder="I have bought this guitar 5 years ago. 
-              Tuning is good, colors have fainted a bit."
-              formControlName="description">
+            <textarea class="form-control" placeholder="I have bought this guitar 5 years ago. 
+              Tuning is good, colors have fainted a bit." formControlName="description">
             </textarea>
+            <span class="el-sm">Type a minimum of 30 characters</span>
           </div>
 
           <!--============  SPECS  =========================-->
@@ -266,46 +216,32 @@
 
           <!--============  AGE  =========================-->
           <div class="form-group">
-            <label>How Old is your Product</label>
-            <input type="number" class="form-control input-md"
-              placeholder="5"
-              formControlName="age">
+            <label>How Old is your Product (Required)</label>
+            <input type="number" class="form-control input-md" placeholder="5" formControlName="age">
+            <span class="el-sm">Minimum: 1 year Maximum: 30years. Type 1 if less than one year</span>
           </div>
 
           <!--============  COLOR  =========================-->
           <div class="form-group">
-            <label>Color</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Midnight Blue"
-              formControlName="color">
+            <label>Color (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Midnight Blue" formControlName="color">
           </div>
 
           <!--============  MATERIAL  =========================-->
           <div class="form-group">
-            <label>Material</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Wooden" 
-              formControlName="material">
+            <label>Material (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Wooden" formControlName="material">
           </div>
 
           <!--============  BRAND  =========================-->
           <div class="form-group">
-            <label>Brand</label>
-            <input type="text" class="form-control input-md" 
-              placeholder="Yamaha"
-              formControlName="brand">
+            <label>Brand (Optional)</label>
+            <input type="text" class="form-control input-md" placeholder="Yamaha" formControlName="brand">
           </div>
 
-          <!--============  FEATURES  =========================-->
-          <div class="form-group">
-            <label>Other Features</label>
-            <input *ngFor="let control of createExchangeProductForm.controls['features'].controls"
-            type="text" class="form-control input-md m-t" [formControl]="control" />  
-          </div>
-          
           <!--============  USERS  =========================-->
           <h4>Tell us about Yourself</h4>
-          
+
           <!--============  MOBILE  =========================-->
           <div class="form-group">
             <label>Your Name</label>
@@ -323,40 +259,33 @@
           <!--============  MOBILE  =========================-->
           <div class="form-group">
             <label>Mobile Number (+91-)</label>
-            <input type="number" class="form-control input-md"
-              placeholder="9812398123"
-              formControlName="mobile">
+            <input type="number" class="form-control input-md" placeholder="9812398123" formControlName="mobile">
           </div>
 
           <!--============  EXCHANGE WITH  =========================-->
           <h4>Exchange With</h4>
           <div class="form-group">
-            <label>Exchange With</label>
-            <input type="text" class="form-control input-md"
-              placeholder="Another Guitar" 
-              formControlName="exchangeWith">
+            <label>Exchange With Instrument (Required)</label>
+            <input type="text" class="form-control input-md" placeholder="Another Guitar" formControlName="exchangeWith">
           </div>
 
           <!--============  EXCHANGE INFO  =========================-->
           <div class="form-group">
-            <label>Exchange Info</label>
-            <textarea class="form-control" 
-              placeholder="Anything similar to Electric Guitar RXj5 like Trembolo."
-              formControlName="exchangeInfo">
+            <label>Exchange Info (Required)</label>
+            <textarea class="form-control" placeholder="Anything similar to Electric Guitar RXj5 like Trembolo." formControlName="exchangeInfo">
             </textarea>
+            <span class="el-sm">Type a minimum of 30 characters</span>
           </div>
-        
+
           <div class="form-group">
             <label>Product Image</label>
             <span>You can upload image after creating the Product, click button below to create your product.</span>
           </div>
           <!--============  SUBMIT  =========================-->
-           <!-- [disabled]="(!createExchangeProductForm.valid || !imageUploaded) ? true : false">-->
-          <button type="submit" class="btn btn-green" 
-            value="Submit Form"
-            [disabled]="!createExchangeProductForm.valid">
-            Add  Exchange Product to E4Bands
-        </button>
+          <!-- [disabled]="(!createExchangeProductForm.valid || !imageUploaded) ? true : false">-->
+          <button type="submit" class="btn btn-green" value="Submit Form" [disabled]="!createExchangeProductForm.valid">
+            Add Exchange Product to E4Bands
+          </button>
 
         </form>
       </div>

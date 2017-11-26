@@ -8,6 +8,15 @@
 # dependencies
 /node_modules
 
+# Environment Files
+/src/environments/*
+
+# Firebase
+firebase.json
+database.rules.json
+.firebaserc
+.editorconfig
+
 # IDEs and editors
 /.idea
 .project

@@ -22,12 +22,6 @@ export class SellComponent implements OnInit {
   createProductForm: FormGroup;
   createExchangeProductForm: FormGroup;
 
-  storageRef;
-  progress;
-  imageName;
-  imageURL;
-  imageUploaded = false;
-
   soldByUserId;
   soldByUserName;
 
@@ -65,7 +59,7 @@ export class SellComponent implements OnInit {
         Validators.compose([
           Validators.required,
           Validators.minLength(30),
-          Validators.maxLength(300)
+          Validators.maxLength(500)
         ])
       ],
       'age': [
@@ -79,10 +73,6 @@ export class SellComponent implements OnInit {
       'color': null,
       'material': null,
       'brand': null,
-      'features': this.fb.array(
-        [[null, Validators.required], null, null],
-        Validators.required
-      ),
       'city': [null, Validators.required],
       'mobile': [
         null,
@@ -117,10 +107,6 @@ export class SellComponent implements OnInit {
       'color': null,
       'material': null,
       'brand': null,
-      'features': this.fb.array(
-        [[null, Validators.required], null, null],
-        Validators.required
-      ),
       'city': [null, Validators.required],
       'mobile': [
         null,
@@ -148,8 +134,6 @@ export class SellComponent implements OnInit {
         this.loggedIn = true;
       }
     });
-
-    this.storageRef = firebase.storage().ref();
   }
 
   createProduct(data) {
@@ -177,31 +161,6 @@ export class SellComponent implements OnInit {
     this.exchangeProductsRef.doc(PUSHKEY).set(EXCHANGE_PRODUCT);
     this.router.navigateByUrl('/exchange-product/' + PUSHKEY);
   }
-
-  // uploadImg(event) {
-  //   const image = event.srcElement.files[0];
-  //   this.imageName = image.name;
-  //   const path = 'productImages/' + image.name;
-  //   const productImagesRef = this.storageRef.child(path);
-  //   const uploadTask = productImagesRef.put(image);
-
-  //   uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-  //     (snapshot) => {
-  //       // Upload Progress
-  //       this.progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 10000) / 100;
-  //     },
-  //     (error) => {
-  //       // Upload Failed
-  //       console.log('The Error while Uploading' + error);
-  //     },
-  //     () => {
-  //       // Upload completed successfully, now we can get the download URL
-  //       console.log('Image Uploaded at - ' + uploadTask.snapshot.downloadURL);
-  //       this.imageURL = uploadTask.snapshot.downloadURL;
-  //       this.imageUploaded = true;
-  //     }
-  //   );
-  // }
 
   /// Better Solution at
   /// https://stackoverflow.com/questions/42184800/how-to-validate-formarray-length-in-angular2

@@ -26,6 +26,14 @@
   color: #b5b5b5;
 }
 
+.link-item a {
+  color: #b5b5b5;
+}
+
+.link-item a:hover {
+  color: white;
+}
+
 .link-list .link-item:hover {
   color: white;
 }
