@@ -9,6 +9,7 @@
 /node_modules
 
 # Environment Files
+/src/environments
 /src/environments/*
 
 # Firebase
