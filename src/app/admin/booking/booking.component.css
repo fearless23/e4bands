@@ -1,0 +1,48 @@
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2em 1.42em;
+}
+
+input.booking-date {
+  padding: .8em;
+  margin: 0 1em;
+}
+
+.h2 {
+  text-align: center;
+}
+
+.bookings-container {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  min-width: 63.61em;
+}
+
+.hour{  width: 3.19em; }
+.time {  width: 12.83em;}
+.status { width: 8.07em;}
+.other {  width: 9.06em;}
+.user{ 
+  min-width: 20.41em;
+  flex-grow: 1;
+}
+
+.status.active {
+  color: #2ca58d;
+}
+
+.table-header {
+  background: #2d232c;
+  color: white;
+}
+
+.row{
+  height:2.25em;
+  padding: 0 .5em;
+}
+
+li.row:nth-child(2n){
+  background-color: rgba(181, 181, 181, 0.5);
+}

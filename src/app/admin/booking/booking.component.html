@@ -1,0 +1,41 @@
+<div class="white2">
+  <div class="medium-container">
+
+    <div class="date-container">
+      <span>Select a Date</span>
+      <input type="date" class="booking-date" [(ngModel)]="selectedDate" (change)="dateSelected(selectedDate)">
+    </div>
+
+    <h2>Bookings of {{selectedDate | date}}</h2>
+
+    <div class="bookings-container">
+      <div class="row fbox-fe controls">Controls</div>
+      <div class="row fbox table-header">
+        <span class="hour">Hour</span>
+        <span class="time">TimeSlot</span>
+        <span class="status">Booked</span>
+        <span class="user">User Name</span>
+        <span class="other">Mobile</span>
+        <span class="other">Booking Date</span>
+        <span class="other">Action</span>
+
+      </div>
+      <ul class="booking-table">
+        <li class="row fbox" *ngFor="let timeslot of timeSlots">
+          <span class="hour">{{timeslot.value}}</span>
+          <span class="time">{{timeslot.text}}</span>
+          <span class="status" [class.active]="timeslot.booked">{{timeslot.booked? 'Booked': 'Not Booked'}}</span>
+          <span class="user">{{timeslot.user ? timeslot.user : ' - '}}</span>
+          <span class="other">{{timeslot.mobile ? timeslot.mobile : ' - '}}</span>
+          <span class="other">{{timeslot.dateOfBooking ? (timeslot.dateOfBooking | date) : ' - '}}</span>
+          <span class="other">Action</span>
+        </li>
+      </ul>
+    </div>
+    <!-- <div *ngFor="let timeslot of slots" class="p-y-md">{{timeslot.hour}}--Booked: {{timeslot.booked}}</div>
+
+    <div</div> -->
+
+
+  </div>
+</div>

@@ -52,7 +52,10 @@ const routes: Routes = [
   },
   { path: 'about', loadChildren: './about/about.module#AboutModule' },
   { path: 'login', loadChildren: './login/login.module#LoginModule' },
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
   { path: '**', component: NotFoundComponent }
+
+
 ];
 
 @NgModule({
